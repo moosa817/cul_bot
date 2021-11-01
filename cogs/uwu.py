@@ -15,9 +15,9 @@ class uwu(commands.Cog):
 
     @commands.Cog.listener()
     async def on_message(self,message):
-        chance = [1,2]
+        chance = [1,2,3]
         random.shuffle(chance)
-        if chance[0] == 1:
+        if chance[0] == 1 or chance[1]==1:
             client = self.client
             await client.process_commands(message)
 
