@@ -18,9 +18,6 @@ class uwu(commands.Cog):
         chance = [1,2,3]
         random.shuffle(chance)
         if chance[0] == 1 or chance[1]==1:
-            client = self.client
-            await client.process_commands(message)
-
             if message.content.startswith('uwu') or message.content.startswith('UWU')or message.content.startswith('UwU'):
                 e = os.getcwd()
                 files = os.listdir(e+"/data/uwu")

@@ -9,5 +9,9 @@ class snipe(commands.Cog):
     async def on_ready(self):
         print("ADDED snipe.py")
 
+    @commands.command()
+    async def snipe(self,ctx):
+        await ctx.send("A")
+
 def setup(client):
     client.add_cog(snipe(client))

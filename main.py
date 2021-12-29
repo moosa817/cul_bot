@@ -3,8 +3,8 @@ from discord.ext import commands
 import os
 import config
 
-client = commands.Bot(command_prefix=config.prefix)
 
+client = commands.Bot(command_prefix=config.prefix)
 
 
 for filename in os.listdir("./cogs"):

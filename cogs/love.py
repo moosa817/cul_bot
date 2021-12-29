@@ -4,7 +4,7 @@ import time
 import os
 import random
 
-
+# <33
 class love(commands.Cog):
     def __init__(self,client):
         self.client = client
@@ -15,9 +15,6 @@ class love(commands.Cog):
 
     @commands.Cog.listener()
     async def on_message(self,message):
-        
-        client = self.client
-        await client.process_commands(message)
 
         if message.content.startswith('<33'):
             e = os.getcwd()
@@ -27,7 +24,6 @@ class love(commands.Cog):
             gg = e+'/data/loml/'+files[0]
 
             await message.channel.send(file=discord.File(gg))
-            time.sleep(4)
 
 
 
