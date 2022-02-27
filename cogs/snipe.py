@@ -31,5 +31,9 @@ class snipe(commands.Cog):
         except:
             await ctx.send(f"There are no deleted messages in #{channel.name}")
 
+    @commands.command()
+    async def help(self,ctx):
+        e = discord.Embed(title="cul help",description="cul help <shows this command>\ncul snipe <snipes the last message>")
+        await ctx.send(embed=e)
 def setup(client):
     client.add_cog(snipe(client))
