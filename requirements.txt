@@ -1,1 +1,4 @@
 discord
+random2
+requests
+beautifulsoup4
