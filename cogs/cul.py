@@ -16,7 +16,7 @@ class cul(commands.Cog):
     @commands.Cog.listener()
     async def on_message(self,message):
         pass
-        if message.content.startswith('cool'):
+        if message.content.startswith('cool') or message.content.startswith('kul') or message.content.startswith('kewl'):
             await message.delete()
             # await message.channel.send(f"cul from: @{message.author}")
 
