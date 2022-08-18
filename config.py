@@ -1,2 +1,2 @@
-auth = "OTAzNzAzODA2NDE4NzU5NzEw.YXw1wQ.0YJ2rI2sEv-zDgOrApTteYcyJ34"
+auth = "OTAzNzAzODA2NDE4NzU5NzEw.GzoEty.RpPoVSutPs7Qd8mCaiK3Usa_aJYuqMSurQvGH8"
 prefix = "cul "
