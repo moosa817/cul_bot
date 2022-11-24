@@ -1,7 +1,7 @@
 import discord
 from discord.ext import commands
 from time import sleep
-class snipe(commands.Cog):
+class zsetup(commands.Cog):
     def __init__(self,client):
         self.client = client
 
@@ -17,5 +17,5 @@ class snipe(commands.Cog):
         print(f"ONLINE ON {le} Servers")
         await client.change_presence(activity=discord.Game(name=f"cul | cul help"))
 
-def setup(client):
-    client.add_cog(snipe(client))
+async def setup(client):
+    await client.add_cog(zsetup(client))

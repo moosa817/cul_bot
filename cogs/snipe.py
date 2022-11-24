@@ -31,5 +31,5 @@ class snipe(commands.Cog):
         except:
             await ctx.send(f"There are no deleted messages in #{channel.name}")
 
-def setup(client):
-    client.add_cog(snipe(client))
+async def setup(client):
+    await client.add_cog(snipe(client))
