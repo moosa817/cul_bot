@@ -22,7 +22,7 @@ class love(commands.Cog):
             
             random.shuffle(files)
             gg = e+'/data/loml/'+files[0]
-
+            print(discord.File(gg))
             await message.channel.send(file=discord.File(gg))
 
 

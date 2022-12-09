@@ -1,10 +1,7 @@
-import discord
-from discord.ext import commands
-import os
 import config
-from discord import app_commands
-import asyncio
-
+from discord.ext import commands
+import discord
+import os
 
 
 def mixedCase(*args):
@@ -21,34 +18,32 @@ def mixedCase(*args):
 
   return list(total)
 
+
 intents = discord.Intents.all()
 intents.members = True
+bot = commands.Bot(command_prefix=config.prefix,intents=intents)
 
-bot = commands.Bot(command_prefix=mixedCase(config.prefix),intents=intents,case_insensitive=True)
 
-@bot.event
-async def on_ready():
-    print("bot ready?")
-    try:
-        synced = await bot.tree.sync()
-        print(f"synced {len(synced)} commands")
-    except Exception as e:
-        print(e)
 
 @bot.tree.command(name="hello")
 async def hello(interaction:discord.Interaction):
     await interaction.response.send_message("i need badge")
 
 
-async def load():
+
+
+@bot.event
+async def on_ready():
+    print("bot ready?")
     for filename in os.listdir("./cogs"):
         if filename.endswith('.py'):
+            print(f"{filename } loaded ")
             await bot.load_extension(f'cogs.{filename[:-3]}')
+    try:
+        synced = await bot.tree.sync()
+        print(f"synced {len(synced)} commands")
+    except Exception as e:
+        print(e)
 
-async def main():
-    await load()
-    await bot.start(config.auth)
-
-
-
-asyncio.run(main())
+# Run the bot
+bot.run(config.auth)
