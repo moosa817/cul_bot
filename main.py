@@ -36,9 +36,24 @@ async def hello(interaction:discord.Interaction):
 async def on_ready():
     print("bot ready?")
     for filename in os.listdir("./cogs"):
-        if filename.endswith('.py'):
-            print(f"{filename } loaded ")
-            await bot.load_extension(f'cogs.{filename[:-3]}')
+      if filename.endswith('.py'):
+        print(f"{filename } loaded ")
+        await bot.load_extension(f'cogs.{filename[:-3]}')
+
+    le = len(bot.guilds)
+    print(bot.user.name,"is READY")
+    for i in bot.guilds:
+      print("LOGGED IN",i)
+    
+    print(f"ONLINE ON {le} Servers")
+    await bot.change_presence(activity=discord.Game(name=f"cul | cul help"))
+
+
+
+
+
+
+  
     try:
         synced = await bot.tree.sync()
         print(f"synced {len(synced)} commands")

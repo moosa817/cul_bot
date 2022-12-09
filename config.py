@@ -10,9 +10,6 @@
 # db_user = os.getenv(db_user_key, default=None)
 # db_pwd = os.getenv(db_passwd_key, default=None)
 # db_database = os.getenv(db_database_key, default=None)
-import mysql.connector
-
-
 auth = "OTAzNzAzODA2NDE4NzU5NzEw.GzoEty.RpPoVSutPs7Qd8mCaiK3Usa_aJYuqMSurQvGH8"
 
 
