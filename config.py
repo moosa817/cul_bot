@@ -1,30 +1,22 @@
-# db_host_key = "db_host"
-# db_user_key = "db_user_key"
-# db_passwd_key = "db_passwd"
-# db_database_key = "db_database"
-
-# auth = os.getenv(auth_key, default=None)
+import os
 
 
-# db_host = os.getenv(db_host_key, default=None)
-# db_user = os.getenv(db_user_key, default=None)
-# db_pwd = os.getenv(db_passwd_key, default=None)
-# db_database = os.getenv(db_database_key, default=None)
-auth = "OTAzNzAzODA2NDE4NzU5NzEw.GzoEty.RpPoVSutPs7Qd8mCaiK3Usa_aJYuqMSurQvGH8"
+auth = "" #discord bot auth token
+db_host = "" #mysql databasehost
+db_database = "" #mysql database db
+db_pwd = "" #mysql db pwd
+db_user = "" #mysql db user
+
+auth = os.getenv("auth",default=auth)
+db_host = os.getenv("db_host",default=auth)
+db_database = os.getenv("db_database",default=auth)
+db_user = os.getenv("db_user",default=auth)
+db_pwd = os.getenv("db_pwd",default=db_pwd)
 
 
 
-db_host="remotemysql.com"
-db_user="ojo1RYm6Dz"
-db_pwd="KjtXXab7Is"
-db_database="ojo1RYm6Dz"
+
+
 
 prefix = "cul "
-host = "http://localhost:5000/"
-
-# conn = mysql.connector.connect(
-#         host=config.db_host,
-#         user=config.db_user,
-#         passwd=config.db_pwd,
-#         database=config.db_database)
-# cur = conn.cursor()
+host = "https://cul-bot.moosa817.repl.co/"
