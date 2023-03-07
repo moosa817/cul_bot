@@ -1,7 +1,7 @@
 from discord.ext import commands,bridge
-from additional_files import pint_api
-
-
+from additional_files import ask
+import config
+import discord
 # <33
 class mycommands(commands.Cog):
 
@@ -9,10 +9,31 @@ class mycommands(commands.Cog):
         self.client = client
 
 
-    # @bridge.bridge_command(description="Solve Expressions or Equations")
-    # async def calculate(self,ctx,expression:str):
-    #   pass
+    @bridge.bridge_command(description="Math questions/Date Related Questions/random no etc")
+    async def ask(self,ctx,question:str):
+        await ctx.respond(ask.ask(question,config.rapid_api_key))
 
+    @bridge.bridge_command(description="Help Command")
+    async def help(self,ctx):
+
+        
+        helpEmbed = embed=discord.Embed(title="Ask Command", description="```/ask <question> OR cul ask <question> ``` Math questions/Date Related Questions/random no etc ")
+        embed.add_field(name="Search Command", value="```/search <keyword> <no_of_images> OR cul search <keyword> <no_of_images>``` Search Images With Pinterest", inline=False)
+        embed.add_field(name="Snipe Command", value="```/snipe OR cul snipe ``` Bring up Last Message", inline=True)
+        embed.add_field(name="Invite Command", value="```/invite OR cul invite ``` Invite Bot", inline=True)
+
+        await ctx.respond(embed = helpEmbed)
+
+    @bridge.bridge_command()
+    async def invite(self,ctx):
+        embed=discord.Embed(title="INVITE CUL BOT", url="https://bit.ly/3vTYyUw")
+        await ctx.respond(embed=embed)
+
+    @commands.Cog.listener()
+    async def on_message_delete(self,message):
+        print(message)
+        print(message.content)
+        print(message.attachments[0].proxy_url)
 
 def setup(client):
     client.add_cog(mycommands(client))

@@ -21,7 +21,8 @@ def mixedCase(*args):
 
 intents = discord.Intents.all()
 intents.members = True
-bot = bridge.Bot(command_prefix=config.prefix,intents=intents)
+bot = bridge.Bot(command_prefix=config.prefix,intents=intents,help_command=None)
+
 
 
 @bot.event
@@ -33,6 +34,7 @@ async def on_ready():
     print("LOGGED IN",i)
 
   print(f"ONLINE ON {le} Servers")
+  
   
 
 
