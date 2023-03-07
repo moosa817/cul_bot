@@ -32,9 +32,8 @@ class text(commands.Cog):
                 index = names.index(name)
                 txt = txts[index]
 
-                print("here")
-                await message.channel.send(txt)                
+                await message.channel.send(txt,reference=message)                
            
 
-async def setup(client):
-    await client.add_cog(text(client))
+def setup(client):
+    client.add_cog(text(client))

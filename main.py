@@ -1,5 +1,5 @@
 import config
-from discord.ext import commands
+from discord.ext import commands,bridge
 import discord
 import os
 
@@ -21,44 +21,32 @@ def mixedCase(*args):
 
 intents = discord.Intents.all()
 intents.members = True
-bot = commands.Bot(command_prefix=config.prefix,intents=intents)
-
-
-
-@bot.tree.command(name="hello")
-async def hello(interaction:discord.Interaction):
-    await interaction.response.send_message("i need badge")
-
-
+bot = bridge.Bot(command_prefix=config.prefix,intents=intents)
 
 
 @bot.event
 async def on_ready():
-    print("bot ready?")
-    for filename in os.listdir("./cogs"):
-      if filename.endswith('.py'):
-        print(f"{filename } loaded ")
-        await bot.load_extension(f'cogs.{filename[:-3]}')
+  await bot.change_presence(activity=discord.Game(name=f"cul | cul help"))
+  le = len(bot.guilds)
+  print(bot.user.name,"is READY")
+  for i in bot.guilds:
+    print("LOGGED IN",i)
 
-    le = len(bot.guilds)
-    print(bot.user.name,"is READY")
-    for i in bot.guilds:
-      print("LOGGED IN",i)
-    
-    print(f"ONLINE ON {le} Servers")
-    await bot.change_presence(activity=discord.Game(name=f"cul | cul help"))
-
-
-
-
-
-
+  print(f"ONLINE ON {le} Servers")
   
-    try:
-        synced = await bot.tree.sync()
-        print(f"synced {len(synced)} commands")
-    except Exception as e:
-        print(e)
+
+
+
+def run_bot(token):
+  print("bot ready?")
+  
+  for filename in os.listdir("./mycogs"):
+    if filename.endswith('.py'):
+      print(f"{filename } loaded ")
+      bot.load_extension(f'mycogs.{filename[:-3]}')
+
+  bot.run(config.auth)
+
 
 # Run the bot
-bot.run(config.auth)
+run_bot(config.auth)

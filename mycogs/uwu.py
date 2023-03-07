@@ -10,10 +10,6 @@ class uwu(commands.Cog):
         self.client = client
 
     @commands.Cog.listener()
-    async def on_ready(self):
-        print("ADDED uwu.py UwU")
-
-    @commands.Cog.listener()
     async def on_message(self,message):
         chance = [1,2,3]
         random.shuffle(chance)
@@ -32,5 +28,5 @@ class uwu(commands.Cog):
 
 
 
-async def setup(client):
-    await client.add_cog(uwu(client))
+def setup(client):
+    client.add_cog(uwu(client))

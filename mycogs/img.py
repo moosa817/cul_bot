@@ -48,11 +48,11 @@ class img(commands.Cog):
                     is_img = False
                 
                 if is_img:
-                    await message.channel.send(config.host+og_image)
+                    await message.channel.send(config.host+og_image,reference=message)
                 else:
-                    await message.channel.send(og_image)
+                    await message.channel.send(og_image,reference=message)
                 
            
 
-async def setup(client):
-    await client.add_cog(img(client))
+def setup(client):
+    client.add_cog(img(client))

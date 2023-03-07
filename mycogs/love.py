@@ -10,10 +10,6 @@ class love(commands.Cog):
         self.client = client
 
     @commands.Cog.listener()
-    async def on_ready(self):
-        print("ADDED uwu.py UwU")
-
-    @commands.Cog.listener()
     async def on_message(self,message):
 
         if message.content.startswith('<33'):
@@ -28,5 +24,5 @@ class love(commands.Cog):
 
 
 
-async def setup(client):
-    await client.add_cog(love(client))
+def setup(client):
+    client.add_cog(love(client))
