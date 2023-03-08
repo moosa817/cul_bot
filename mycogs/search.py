@@ -1,7 +1,6 @@
 from discord.ext import commands,bridge
 from additional_files import pint_api
 
-pint_scrapper = pint_api.PinterestImageScraper()
 
 # <33
 class search(commands.Cog):
@@ -12,7 +11,8 @@ class search(commands.Cog):
 
     @bridge.bridge_command(description="Search Images With Pinterest")
     async def search(self,ctx,keyword:str,no_of_images:int=4):
-        msg = await ctx.respond("Plz Wait Fetching Images ...")
+        await ctx.respond("Plz Wait Fetching Images ...")
+        pint_scrapper = pint_api.PinterestImageScraper()
         url_list = pint_scrapper.make_ready(keyword)
         if len(url_list) >= 10:
             url_list = url_list[:10]
@@ -25,6 +25,7 @@ class search(commands.Cog):
                 a = a+1
             else:
                 await ctx.send(i)
+        url_list = []
 
 
 def setup(client):

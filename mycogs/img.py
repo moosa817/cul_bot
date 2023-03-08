@@ -1,15 +1,13 @@
-import discord
 from discord.ext import commands
 import random
-import mysql.connector
+from pymongo import MongoClient
+
 import config
 # <33
-conn = mysql.connector.connect(
-        host=config.db_host,
-        user=config.db_user,
-        passwd=config.db_pwd,
-        database=config.db_database)
-cur = conn.cursor()
+client = MongoClient(config.mongo_str)
+db = client.get_database('cul_bot')
+records = db.img_stuff
+                
 
 class img(commands.Cog):
     def __init__(self,client):
@@ -19,21 +17,22 @@ class img(commands.Cog):
 
     @commands.Cog.listener()
     async def on_message(self,message):
-        result = cur.execute("SELECT * FROM `img_stuff`")
-        results = cur.fetchall()
+        result = records.find({})
+        
+
         names = []
         imgs = []
         og_image = ""
-        for i in results:
-            names.append(i[1])
-            imgs.append(i[2])
+        for i in result:
+            names.append(i.get("name"))
+            imgs.append(i.get("img"))
 
         for name in names:
             if message.content.startswith(name) or message.content.startswith(name.upper()) or message.content.startswith(name.lower()) or message.content.startswith(name.capitalize()):
                 index = names.index(name)
                 image = imgs[index]
 
-                print("here")
+                # print("here")
                 images = []
                 for k in image.split(","):
                     images.append(k)

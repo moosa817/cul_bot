@@ -29,11 +29,5 @@ class mycommands(commands.Cog):
         embed=discord.Embed(title="INVITE CUL BOT", url="https://bit.ly/3vTYyUw")
         await ctx.respond(embed=embed)
 
-    @commands.Cog.listener()
-    async def on_message_delete(self,message):
-        print(message)
-        print(message.content)
-        print(message.attachments[0].proxy_url)
-
 def setup(client):
     client.add_cog(mycommands(client))

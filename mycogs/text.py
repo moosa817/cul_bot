@@ -1,15 +1,13 @@
 import discord
 from discord.ext import commands
 import random
-import mysql.connector
 import config
+from pymongo import MongoClient
 # <33
-conn = mysql.connector.connect(
-        host=config.db_host,
-        user=config.db_user,
-        passwd=config.db_pwd,
-        database=config.db_database)
-cur = conn.cursor()
+client = MongoClient(config.mongo_str)
+db = client.get_database('cul_bot')
+records = db.text_stuff
+                
 
 class text(commands.Cog):
     def __init__(self,client):
@@ -19,13 +17,12 @@ class text(commands.Cog):
 
     @commands.Cog.listener()
     async def on_message(self,message):
-        result = cur.execute("SELECT * FROM `text_stuff`")
-        results = cur.fetchall()
+        results = records.find({})
         names = []
         txts = []
         for i in results:
-            names.append(i[1])
-            txts.append(i[2])
+            names.append(i.get("name"))
+            txts.append(i.get("text"))
 
         for name in names:
             if message.content.startswith(name) or message.content.startswith(name.upper()) or message.content.startswith(name.lower()) or message.content.startswith(name.capitalize()):

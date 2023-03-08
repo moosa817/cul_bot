@@ -40,32 +40,8 @@ python main.py
 
 
 <h2>ADDITIONAL INFO</h2>
-https://cul-bot.moosa817.repl.co/ is a website connected to mysql to db to add images and replies
+https://cul-bot.moosa817.repl.co/ is a website connected to mongodb to add images and replies
 
 You can view code of website at https://replit.com/@moosa817/Cul-Bot
 
-Here's the sql for the db
-```
-CREATE TABLE IF NOT EXISTS `img_stuff` (
-    `id` INTEGER PRIMARY KEY AUTO_INCREMENT NOT NULL,
-    `name` VARCHAR(255) NOT NULL,
-    `img` VARCHAR(255)
-);
-CREATE TABLE IF NOT EXISTS `logs` (
-     `id` INTEGER PRIMARY KEY AUTO_INCREMENT NOT NULL,
-    `time` VARCHAR(255) NOT NULL,
-    `ip_address` VARCHAR(255) NOT NULL
-);
 
-CREATE TABLE IF NOT EXISTS `text_stuff` (
-     `id` INTEGER PRIMARY KEY AUTO_INCREMENT NOT NULL,
-    `name` VARCHAR(255) NOT NULL,
-    `text` VARCHAR(255) NOT NULL
-);
-CREATE TABLE IF NOT EXISTS `images` (
-     `id` INTEGER PRIMARY KEY,
-    `filename` TEXT NOT NULL,
-    `img` TEXT NOT NULL
-);
--- MYSQL DB
-```

@@ -78,7 +78,7 @@ class PinterestImageScraper:
     def start_scraping(key=None):
         try:
             key = input("Enter keyword: ") if key == None else key
-            keyword = key + " pinterest"
+            keyword = key + " site:pinterest.com"
             keyword = keyword.replace("+", "%20")
             url = f'http://www.google.co.in/search?hl=en&q={keyword}'
             # print('[+] starting search ...')
@@ -95,9 +95,8 @@ class PinterestImageScraper:
         # print('[+] saving json data ...')
 
 
-        start = time.time()
         extracted_urls = extracted_urls[:1]
-        
+
 
         for i in extracted_urls:
             self.get_source(i)
@@ -108,6 +107,8 @@ class PinterestImageScraper:
         # get all urls of images and save in a list
         url_list = self.save_image_url()
         
+
+        self.json_data_list = {}
         return url_list
 
 
