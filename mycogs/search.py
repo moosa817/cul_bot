@@ -1,5 +1,5 @@
 from discord.ext import commands,bridge
-from additional_files import pint_api
+from additional_files import google_search
 
 
 # <33
@@ -9,15 +9,17 @@ class search(commands.Cog):
         self.client = client
 
 
-    @bridge.bridge_command(description="Search Images With Pinterest")
+    @bridge.bridge_command(description="Search Images With Google ILLEGALLY")
     async def search(self,ctx,keyword:str,no_of_images:int=4):
         await ctx.respond("Plz Wait Fetching Images ...")
-        pint_scrapper = pint_api.PinterestImageScraper()
-        url_list = pint_scrapper.make_ready(keyword)
+
+        url_list = google_search.download_images(keyword,no_of_images)
+        if not url_list:
+            await ctx.edit("No Images Found :()")
+            return 
         if len(url_list) >= 10:
             url_list = url_list[:10]
         
-        url_list = url_list[:no_of_images]
         a = 0
         for i in url_list:
             if a == 0:

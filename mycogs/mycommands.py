@@ -1,7 +1,11 @@
+from typing import Union
 from discord.ext import commands,bridge
 from additional_files import ask
 import config
 import discord
+import discord
+from discord import option
+
 # <33
 class mycommands(commands.Cog):
 
@@ -28,6 +32,11 @@ class mycommands(commands.Cog):
     async def invite(self,ctx):
         embed=discord.Embed(title="INVITE CUL BOT", url="https://bit.ly/3vTYyUw")
         await ctx.respond(embed=embed)
+
+
+
+    
+
 
 def setup(client):
     client.add_cog(mycommands(client))
