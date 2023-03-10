@@ -11,6 +11,7 @@ class uwu(commands.Cog):
 
     @commands.Cog.listener()
     async def on_message(self,message):
+        if message.author.bot:return
         chance = [1,2,3]
         random.shuffle(chance)
         if chance[0] == 1 or chance[1]==1:

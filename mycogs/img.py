@@ -17,6 +17,7 @@ class img(commands.Cog):
 
     @commands.Cog.listener()
     async def on_message(self,message):
+        if message.author.bot:return
         result = records.find({})
         
 

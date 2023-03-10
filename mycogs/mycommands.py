@@ -1,10 +1,8 @@
-from typing import Union
 from discord.ext import commands,bridge
 from additional_files import ask
 import config
 import discord
 import discord
-from discord import option
 
 # <33
 class mycommands(commands.Cog):

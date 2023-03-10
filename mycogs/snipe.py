@@ -11,6 +11,8 @@ class snipe(commands.Cog):
 
     @commands.Cog.listener()
     async def on_message_delete(self,message):
+        if message.author.bot:return
+
         try:
             snipe_message_image[message.channel.id] = message.attachments[0].proxy_url
             snipe_message_author[message.channel.id] = message.author

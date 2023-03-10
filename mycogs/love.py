@@ -11,7 +11,7 @@ class love(commands.Cog):
 
     @commands.Cog.listener()
     async def on_message(self,message):
-
+        if message.author.bot:return
         if message.content.startswith('<33'):
             e = os.getcwd()
             files = os.listdir(e+"/data/loml")
