@@ -63,11 +63,6 @@ class chat(commands.Cog):
 
     @commands.Cog.listener()
     async def on_message(self,message):
-        if message.author.bot:
-            if len(message.attachments) > 0 or message.embeds != []:
-                await message.delete()
-                return
-            return
         server_id = message.guild.id
         channel_id = message.channel.id
 
@@ -78,15 +73,21 @@ class chat(commands.Cog):
             return
         
         if result["channel_id"] == str(channel_id):
-            if len(message.attachments) > 0 or message.embeds != []:
+            if message.author.bot:
+                if len(message.attachments) > 0 or message.embeds != []:
+                    await message.delete()
+                    return
+                return
 
+
+            if len(message.attachments) > 0 or message.embeds != []:
+                
                 await message.channel.send("Hey you can't upload attachments or embeds in here its a chat only channel do /remove_channel to remove it",reference=message,delete_after=5)
                 await message.delete()
 
                 return
             
             WEBHOOK_URL = result["webhook_link"]
-            MESSAGE_CONTENT = message.content
             PROFILE_PICTURE_URL = 'https://media.discordapp.net/attachments/868218686366949416/1083870739511377951/image.png'
 
             async with aiohttp.ClientSession() as session:

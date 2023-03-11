@@ -22,7 +22,10 @@ class mycommands(commands.Cog):
         helpEmbed = embed=discord.Embed(title="Ask Command", description="```/ask <question> OR cul ask <question> ``` Math questions/Date Related Questions/random no etc ")
         embed.add_field(name="Search Command", value="```/search <keyword> <no_of_images> OR cul search <keyword> <no_of_images>``` Search Images With Pinterest", inline=False)
         embed.add_field(name="Snipe Command", value="```/snipe OR cul snipe ``` Bring up Last Message", inline=True)
+        embed.add_field(name="Add Waifu Channel", value="```/chat_channel <#channel> OR cul chat_channel <#channel> ``` Set Waifu Chat channel", inline=True)
+        embed.add_field(name="Remove Waifu Channel", value="```/remove_channel <#channel> OR cul remove_channel <#channel>  ``` Remove Waifu Chat channel", inline=True)
         embed.add_field(name="Invite Command", value="```/invite OR cul invite ``` Invite Bot", inline=True)
+        
 
         await ctx.respond(embed = helpEmbed)
 
