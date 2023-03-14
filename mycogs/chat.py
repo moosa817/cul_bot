@@ -90,12 +90,25 @@ class chat(commands.Cog):
             WEBHOOK_URL = result["webhook_link"]
             PROFILE_PICTURE_URL = 'https://media.discordapp.net/attachments/868218686366949416/1083870739511377951/image.png'
 
-            async with aiohttp.ClientSession() as session:
-                webhook = Webhook.from_url(WEBHOOK_URL,session=session) # Initializing webhook
-                query = message.content
-                response = await waifu_ai_query(query, message.author.id, message.author.name)
+            try:
+                async with aiohttp.ClientSession() as session:
+                    webhook = Webhook.from_url(WEBHOOK_URL,session=session) # Initializing webhook
+                    query = message.content
+                    response = await waifu_ai_query(query, message.author.id, message.author.name)
 
-                await webhook.send(content=response, username='Waifu', avatar_url=PROFILE_PICTURE_URL)
+                    await webhook.send(content=response, username='Waifu', avatar_url=PROFILE_PICTURE_URL)
+            except:
+                webhook = await message.channel.create_webhook(name="Waifu")
+                WEBHOOK_URL = webhook.url
+                records.update_one({"id":str(server_id)},{"$set":{"webhook_link":WEBHOOK_URL}})
+                async with aiohttp.ClientSession() as session:
+                    webhook = Webhook.from_url(WEBHOOK_URL,session=session) # Initializing webhook
+                    query = message.content
+                    response = await waifu_ai_query(query, message.author.id, message.author.name)
+
+                    await webhook.send(content=response, username='Waifu', avatar_url=PROFILE_PICTURE_URL)
+
+
         else:
             pass
             return
